@@ -1,0 +1,99 @@
+[
+  {
+    "categories": [
+      {
+        "catId": 1,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg"
+      },
+      {
+        "catId": 2,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg"
+      },
+      {
+        "catId": 3,
+        "label": "Community",
+        "image": "assets/images/comunity.png"
+      },
+      {
+        "catId": 4,
+        "label": "Art africain",
+        "image": "assets/images/art.jpg"
+      }
+    ],
+    "products": [
+      {
+        "prodId": 1,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg",
+        "price": 2500,
+        "catId": 2
+      },
+      {
+        "prodId": 2,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg",
+        "price": 2500,
+        "catId": 2
+      },
+      {
+        "prodId": 3,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg",
+        "price": 2500,
+        "catId": 2
+      },
+      {
+        "prodId": 4,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg",
+        "price": 2500,
+        "catId": 2
+      },
+      {
+        "prodId": 5,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg",
+        "price": 2500,
+        "catId": 2
+      },
+      {
+        "prodId": 6,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg",
+        "price": 2500,
+        "catId": 2
+      },
+      {
+        "prodId": 7,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg",
+        "price": 2500,
+        "catId": 2
+      },
+      {
+        "prodId": 8,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg",
+        "price": 2500,
+        "catId": 2
+      },
+      {
+        "prodId": 9,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg",
+        "price": 2500,
+        "catId": 2
+      },
+      {
+        "prodId": 10,
+        "label": "Tissu africain",
+        "image": "assets/images/tissu.jpeg",
+        "price": 2500,
+        "catId": 2
+      }
+
+    ]
+  }
+]

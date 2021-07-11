@@ -5,4 +5,5 @@ class SimplitilColor {
   static const mainGray = Color(0XFFf4f5fc);
   static const mainBlue = Color(0XFF3e00cf);
   static const mainBlack = Color(0XFF636779);
+  static const mainRed = Color(0XFFff0000);
 }
