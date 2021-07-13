@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:simplitil/constants/enums/ticket_state.dart';
 import 'package:simplitil/constants/simplitil_color.dart';
+import 'package:simplitil/core/providers/product_provider.dart';
+import 'package:simplitil/ui/screens/base_widget.dart';
 import 'package:simplitil/ui/widgets/product_ticket_card.dart';
 
 class TicketScreen extends StatefulWidget {
@@ -15,6 +19,7 @@ class _TicketScreenState extends State<TicketScreen> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+    ProductProvider _prodProvider = Provider.of<ProductProvider>(context);
 
     return Scaffold(
         backgroundColor: SimplitilColor.mainGray,
@@ -50,134 +55,161 @@ class _TicketScreenState extends State<TicketScreen> {
             ),
           ),
         ),
-        body: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 20.0, bottom: 30.0),
-              child: Text(
-                "TICKET",
-                style: TextStyle(
-                    color: SimplitilColor.mainBlue,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w800),
+        body: BaseWidget(
+          builder: (context, sizingInfos) => Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 20.0, bottom: 30.0),
+                child: Text(
+                  "TICKET",
+                  style: TextStyle(
+                      color: SimplitilColor.mainBlue,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w800),
+                ),
               ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              decoration: BoxDecoration(
-                  border: Border(
-                      bottom: BorderSide(
-                          width: 1.0,
-                          color: SimplitilColor.mainBlack.withOpacity(0.3)))),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        "EN COURS",
-                        style: TextStyle(
-                            fontSize: 16.0, fontWeight: FontWeight.w600),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(
+                            width: 1.0,
+                            color: SimplitilColor.mainBlack.withOpacity(0.3)))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        _prodProvider.onTicketStateChange(TicketState.ENCOURS);
+                      },
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: sizingInfos.screenSize.width * .01),
+                            child: Text(
+                              "EN COURS",
+                              style: TextStyle(
+                                  fontSize: 16.0, fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                          _prodProvider.ticketState == TicketState.ENCOURS
+                              ? Container(
+                                  margin: EdgeInsets.only(top: 15.0),
+                                  width: sizingInfos.screenSize.width * .25,
+                                  height: 4.0,
+                                  color: SimplitilColor.mainBlue,
+                                )
+                              : Container()
+                        ],
                       ),
-                      Container(
-                        margin: EdgeInsets.only(top: 15.0),
-                        width: w * .35,
-                        height: 4.0,
-                        color: SimplitilColor.mainBlue,
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text("EN COURS",
-                          style: TextStyle(
-                              fontSize: 16.0, fontWeight: FontWeight.w600)),
-                      Container(
-                        margin: EdgeInsets.only(top: 15.0),
-                        width: w * .35,
-                        height: 4.0,
-                        color: SimplitilColor.mainBlue,
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            Padding(padding: EdgeInsets.only(top: 20.0)),
-            Expanded(
-                child: ListView.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index) => ProductTicketCard())),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "TOTAL",
-                    style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w700,
-                        color: SimplitilColor.mainBlack),
-                  ),
-                  Text(
-                    "75000 FCFA",
-                    style:
-                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.w700),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-              decoration: BoxDecoration(
-                  border: Border(
-                      top: BorderSide(
-                          width: .5, color: SimplitilColor.mainBlack))),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "METTRE LE TICKET EN ATTENTE",
-                        style: TextStyle(
-                            fontSize: 14.0, fontWeight: FontWeight.w600),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        _prodProvider
+                            .onTicketStateChange(TicketState.ENATTENTE);
+                      },
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                                right: sizingInfos.screenSize.width * .01),
+                            child: Text("EN ATTENTE",
+                                style: TextStyle(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w600)),
+                          ),
+                          _prodProvider.ticketState == TicketState.ENATTENTE
+                              ? Container(
+                                  margin: EdgeInsets.only(top: 15.0),
+                                  width: sizingInfos.screenSize.width * .25,
+                                  height: 4.0,
+                                  color: SimplitilColor.mainBlue,
+                                )
+                              : Container()
+                        ],
                       ),
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              primary: SimplitilColor.mainRed,
-                              shape: CircleBorder()),
-                          onPressed: () {},
-                          child: Icon(Icons.play_arrow_rounded))
-                    ],
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 10.0),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 40.0, vertical: 10.0),
-                    child: Row(
+                    )
+                  ],
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top: 20.0)),
+              Expanded(
+                  child: ListView.builder(
+                      itemCount: _prodProvider.ticketList.length,
+                      itemBuilder: (context, index) =>
+                          ProductTicketCard(_prodProvider.ticketList[index]))),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "TOTAL",
+                      style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w700,
+                          color: SimplitilColor.mainBlack),
+                    ),
+                    Text(
+                      "${_prodProvider.ticketTotalPrice} FCFA",
+                      style: TextStyle(
+                          fontSize: 16.0, fontWeight: FontWeight.w700),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                decoration: BoxDecoration(
+                    border: Border(
+                        top: BorderSide(
+                            width: .5, color: SimplitilColor.mainBlack))),
+                child: Column(
+                  children: [
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Text(
+                          "METTRE LE TICKET EN ATTENTE",
+                          style: TextStyle(
+                              fontSize: 14.0, fontWeight: FontWeight.w600),
+                        ),
                         ElevatedButton(
-                            onPressed: () {},
                             style: ElevatedButton.styleFrom(
                                 primary: SimplitilColor.mainRed,
-                                minimumSize: Size(120.0, 42.0)),
-                            child: Text("ANNULER")),
-                        ElevatedButton(
+                                shape: CircleBorder()),
                             onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                                primary: SimplitilColor.mainBlue,
-                                minimumSize: Size(120.0, 42.0)),
-                            child: Text("PAYER"))
+                            child: Icon(Icons.play_arrow_rounded))
                       ],
                     ),
-                  )
-                ],
-              ),
-            )
-          ],
+                    Container(
+                      margin: EdgeInsets.only(top: 10.0),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 40.0, vertical: 10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                  primary: SimplitilColor.mainRed,
+                                  minimumSize: Size(120.0, 42.0)),
+                              child: Text("ANNULER")),
+                          ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                  primary: SimplitilColor.mainBlue,
+                                  minimumSize: Size(120.0, 42.0)),
+                              child: Text("PAYER"))
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ));
   }
 }

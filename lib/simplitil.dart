@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:simplitil/core/providers/product_provider.dart';
 import 'package:simplitil/ui/screens/home/index.dart';
 
 class SimpliTil extends StatefulWidget {
@@ -11,6 +13,10 @@ class SimpliTil extends StatefulWidget {
 class _SimpliTilState extends State<SimpliTil> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomeScreen());
+    return MultiProvider(providers: [
+      ChangeNotifierProvider<ProductProvider>(
+        create: (context) => ProductProvider(),
+      ),
+    ], child: MaterialApp(home: HomeScreen()));
   }
 }

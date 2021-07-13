@@ -1,0 +1,1 @@
+enum TicketState { ENATTENTE, ENCOURS }

@@ -4,22 +4,26 @@
       {
         "catId": 1,
         "label": "Légumes",
-        "image": "assets/images/legume.jpeg"
+        "image": "assets/images/legume.jpeg",
+        "selected": true
       },
       {
         "catId": 2,
         "label": "Tissu africain",
-        "image": "assets/images/tissu.jpeg"
+        "image": "assets/images/tissu.jpeg",
+        "selected": false
       },
       {
         "catId": 3,
         "label": "Community",
-        "image": "assets/images/comunity.png"
+        "image": "assets/images/comunity.png",
+        "selected": false
       },
       {
         "catId": 4,
         "label": "Art africain",
-        "image": "assets/images/art.jpg"
+        "image": "assets/images/art.jpg",
+        "selected": false
       }
     ],
     "products": [
@@ -92,6 +96,76 @@
         "image": "assets/images/tissu.jpeg",
         "price": 2500,
         "catId": 2
+      },
+      {
+        "prodId": 11,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg",
+        "price": 2500,
+        "catId": 1
+      },
+      {
+        "prodId": 12,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg",
+        "price": 2500,
+        "catId": 1
+      },
+      {
+        "prodId": 13,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg",
+        "price": 2500,
+        "catId": 1
+      },
+      {
+        "prodId": 14,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg",
+        "price": 2500,
+        "catId": 1
+      },
+      {
+        "prodId": 15,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg",
+        "price": 2500,
+        "catId": 1
+      },
+      {
+        "prodId": 16,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg",
+        "price": 2500,
+        "catId": 1
+      },
+      {
+        "prodId": 17,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg",
+        "price": 2500,
+        "catId": 1
+      },
+      {
+        "prodId": 18,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg",
+        "price": 2500,
+        "catId": 1
+      },
+      {
+        "prodId": 19,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg",
+        "price": 2500,
+        "catId": 1
+      },
+      {
+        "prodId": 20,
+        "label": "Légumes",
+        "image": "assets/images/legume.jpeg",
+        "price": 2500,
+        "catId": 1
       }
 
     ]

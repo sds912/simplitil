@@ -1,15 +1,17 @@
 class Category {
-  final int catId;
-  final String label;
-  final String image;
+  int catId;
+  String label;
+  String image;
+  bool selected = false;
 
-  Category(this.catId, this.label, this.image);
+  Category(this.catId, this.label, this.image, this.selected);
 
   Category.fromJson(Map<String, dynamic> json)
       : catId = json['catId'],
         label = json['label'],
-        image = json['image'];
+        image = json['image'],
+        selected = json['selected'];
 
   Map<String, dynamic> toJson() =>
-      {'catId': catId, 'label': label, 'image': image};
+      {'catId': catId, 'label': label, 'image': image, 'selected': selected};
 }
